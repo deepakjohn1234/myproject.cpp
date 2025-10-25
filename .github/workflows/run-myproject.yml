@@ -1,0 +1,23 @@
+name: Run myproject.cpp
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install g++
+        run: sudo apt update && sudo apt install -y g++
+
+      - name: Compile myproject.cpp
+        run: g++ -o myproject myproject.cpp
+
+      - name: Run myproject
+        run: ./myproject
